@@ -26,6 +26,10 @@ const StyledNavbar = styled(NavbarBase)`
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 
+    & * {
+      color: #091929 !important;
+    }
+
     border-bottom: solid 1px #000000b4;
 `
 
