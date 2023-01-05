@@ -28,16 +28,16 @@ const Carousel = styled(BaseCarousel)`
 const CarouselCaption = styled(Carousel.Caption)<{dark? : boolean }>`
   z-index: 2;
   bottom: 0;
-  background: #09192985;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  border-top: solid 1px white;
+  background: #d6d6d685;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: solid 1px black;
   left: 0;
   right: 0;
   padding-top: 10px;
   padding-bottom: 1px;
   & > div {
-    ${ props => props.dark && "color: #fafafa;" }
+    color: #091929;
   }
 `
 
