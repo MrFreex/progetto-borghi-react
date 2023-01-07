@@ -36,7 +36,7 @@ const StyledNavbar = styled(NavbarBase)`
 export const Navbar = () => {
     return <StyledNavbar fixed="top" bg="light" expand="lg">
     <Container fluid>
-        <BrandFlex href="#home">
+        <BrandFlex href="/">
             <FontAwesomeIcon scale="2x" icon={faMountain} />
             <span>Comune di Sappada</span>
         </BrandFlex>
@@ -45,15 +45,19 @@ export const Navbar = () => {
         <Stack direction="row" spacing={2}>
           <NavLink href="/">Home</NavLink>
           <NavLink href="story">Storia</NavLink>
-          <NavDropdown title="Collegamenti" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
+          <NavLink href="gallery">Galleria</NavLink>
+          <NavLink href="book">Prenota</NavLink>
+          <NavDropdown title="Contatti" id="basic-nav-dropdown">
+            <NavDropdown.Item href="mailto://prolocosappada@gmail.com">Email</NavDropdown.Item>
+            <NavDropdown.Item href="https://www.comune.sappada.bl.it">
+              Sito Comunale
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
+            <NavDropdown.Item href="https://sappadadolomiti.com">
+              sappadadolomiti.com
+            </NavDropdown.Item>
+            <NavDropdown.Item href="https://sappadadolomiti.com">
+              altedolomiti.it
             </NavDropdown.Item>
           </NavDropdown>
         </Stack>
