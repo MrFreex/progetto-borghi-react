@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const Fullscreen = styled(motion.div)`
-	position: absolute;
+	position: fixed;
     top:0;
     left:0;
     color: white !important;
@@ -13,8 +13,8 @@ const Fullscreen = styled(motion.div)`
         z-index: 999;
     }
 	background: #000000cb;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 `;
 
 const Centered = styled(motion.div)`
@@ -22,7 +22,8 @@ const Centered = styled(motion.div)`
     transform: translate(-50%,-50%);
     text-align: center;
     & > img {
-        max-height: 50vh;
+        max-width: 80vw;
+		max-height: 50vh;
         border-radius: 20px;
     }
     left:50%;
