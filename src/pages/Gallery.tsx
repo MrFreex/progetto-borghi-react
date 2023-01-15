@@ -47,18 +47,21 @@ const PictureFullscreen = (props: { img?: string, close : () => any }) => {
 };
 
 const PicturesContainer = styled.div`
-	display: flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 20px;
     margin: 0 auto;
 
 	& > img {
 		border-radius: 20px;
 		max-width: 200px;
-		margin: 12px;
+		display: block;
+		margin: auto;
 		transition: 0.15s;
 	}
 
 	& > img:hover {
-		margin: 10px;
+		
 		cursor: pointer;
 		transform: scale(1.05);
 	}
