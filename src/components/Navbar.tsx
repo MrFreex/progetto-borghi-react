@@ -44,9 +44,6 @@ export const Navbar = () => {
         <NavbarBase.Collapse id="basic-navbar-nav">
         <Stack direction="row" spacing={2}>
           <NavLink href="/">Home</NavLink>
-          <NavLink href="story">Storia</NavLink>
-          <NavLink href="gallery">Galleria</NavLink>
-          <NavLink href="book">Prenota</NavLink>
           <NavDropdown title="Contatti" id="basic-nav-dropdown">
             <NavDropdown.Item href="mailto://prolocosappada@gmail.com">Email</NavDropdown.Item>
             <NavDropdown.Item href="https://www.comune.sappada.bl.it">
@@ -60,6 +57,9 @@ export const Navbar = () => {
               altedolomiti.it
             </NavDropdown.Item>
           </NavDropdown>
+          <NavLink href="story">Storia</NavLink>
+          <NavLink href="gallery">Galleria</NavLink>
+          <NavLink href="book">Prenota</NavLink>
         </Stack>
       </NavbarBase.Collapse>
     </Container>
