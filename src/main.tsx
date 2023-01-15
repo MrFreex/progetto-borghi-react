@@ -77,6 +77,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 			<RouterProvider router={router} />
 			{/* </Container> */}
 			{/* Footer */}
+			{ !window.location.href.endsWith("bookconfirm") &&
 			<Footer>
 				<div>
 					Copyright 2023 Filippo Lissandrin
@@ -85,7 +86,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 					<Avatar src="https://cdn.discordapp.com/avatars/338319779641294848/34a8c45d009d9ef39501d4fb748f932f.webp?size=160"/>
 					<div style={{ marginTop: "auto", marginBottom: "auto", textAlign: "center" }}><a href="https://github.com/MrFreex">MrFreex</a> on GitHub</div>
 				</Stack>
-			</Footer>
+			</Footer>}
+			
 		</ThemeProvider>
 	</React.StrictMode>
 );
