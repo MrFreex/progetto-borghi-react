@@ -13,13 +13,14 @@ import {
 	InputLabel,
 	Input,
 	Slider,
+	Button,
 } from "@mui/material";
 import { Component, FunctionComponent, useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowLeft, faCheck as faCheckMark } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 const PageTitle = styled.h1`
@@ -51,12 +52,13 @@ const PersonalInfoStep = (props: StepProps) => {
 		<Stack spacing={2}>
 			<h4>Dati personali</h4>
 			<Stack direction="row" spacing={2}>
-				<TextField value={data["name"]} onChange={(el) => setByKey("name", el.target.value)} variant="standard" label="Nome" />
-				<TextField value={data["surname"]} onChange={(el) => setByKey("surname", el.target.value)} variant="standard" label="Cognome" />
+				<TextField required value={data["name"]} onChange={(el) => setByKey("name", el.target.value)} variant="standard" label="Nome" />
+				<TextField required value={data["surname"]} onChange={(el) => setByKey("surname", el.target.value)} variant="standard" label="Cognome" />
 			</Stack>
 			<h4>Contatti</h4>
 			<Stack direction="row" spacing={2}>
 				<TextField
+					required
 					value={data["phone"]}
 					onChange={(el) => setByKey("phone", el.target.value)}
 					type="tel"
@@ -188,14 +190,21 @@ type ConfirmationProps = {
 };
 
 const ConfirmationStep = (props : ConfirmationProps) => {
-    return <>
-    </>
+    return <Stack spacing={2}>
+		<h2>Confermi di voler concludere la prenotazione, {props.state[0][0].name} {props.state[0][0].surname} ?</h2>
+		<Button href="bookconfirm" startIcon={<FontAwesomeIcon icon={faCheckMark} />} variant="contained">Conferma</Button>
+	</Stack>
 }
 
 export const Book = () => {
 	const [activeStep, setActiveStep] = useState(0);
 
     const today = new Date().toLocaleString("it", { day: "2-digit", year: "numeric", month: "2-digit" }).split("/").reverse().join("-")
+
+	const required = [
+		["name", "surname", "phone"],
+		["stayPlan", "hotel", "departure", "arrival"]
+	]
 
 	const StepsState = [
 		useState<StringIndexed>({}),
@@ -214,6 +223,19 @@ export const Book = () => {
 	const gen = () => {
 		const Component = Steps[activeStep];
 
+		if (activeStep >= StepsState.length) {
+			for (let i = 0; i < StepsState.length; i++) {
+				const v = StepsState[i][0];
+				for (let k of required[i]) {
+					if (!v[k]) {
+						setActiveStep(i);
+						alert("Devi prima compilare i campi obbligatori!");
+						return;
+					}
+				}
+			}
+		}
+
 		return activeStep < StepsState.length ? (
 			<motion.div key={activeStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0 }}>
 				<Component data={StepsState[activeStep][0]} setData={StepsState[activeStep][1]} />
@@ -225,30 +247,37 @@ export const Book = () => {
 
 	return (
 		<Container style={{ marginTop: "75px", maxWidth: "1900px" }}>
-			<PageTitle>Prenota</PageTitle>
-			<Stepper activeStep={activeStep}>
-				<Step>
-					<StepLabel>Dettagli Personali</StepLabel>
-				</Step>
-				<Step>
-					<StepLabel>Informazioni sul viaggio</StepLabel>
-				</Step>
-				<Step>
-					<StepLabel>Conferma</StepLabel>
-				</Step>
-			</Stepper>
-			<StepContent>{gen()}</StepContent>
-			<Stack direction="row" spacing={2}>
-				<Tooltip title="Precedente">
-					<Fab onClick={() => setActiveStep(activeStep > 0 ? activeStep - 1 : activeStep)} color="primary">
-						<FontAwesomeIcon icon={faArrowLeft} />
-					</Fab>
-				</Tooltip>
-				<Tooltip title="Successivo">
-					<Fab onClick={() => setActiveStep(activeStep < 3 ? activeStep + 1 : activeStep)} color="primary">
-						<FontAwesomeIcon icon={faArrowRight} />
-					</Fab>
-				</Tooltip>
+			<Stack spacing={5}>
+				<div>
+					<PageTitle>Prenota</PageTitle>
+					<Stepper activeStep={activeStep}>
+						<Step>
+							<StepLabel>Dettagli Personali</StepLabel>
+						</Step>
+						<Step>
+							<StepLabel>Informazioni sul viaggio</StepLabel>
+						</Step>
+						<Step>
+							<StepLabel>Conferma</StepLabel>
+						</Step>
+					</Stepper>
+					<StepContent>{gen()}</StepContent>
+					<Stack direction="row" spacing={2}>
+						<Tooltip title="Precedente">
+							<Fab onClick={() => setActiveStep(activeStep > 0 ? activeStep - 1 : activeStep)} color="primary">
+								<FontAwesomeIcon icon={faArrowLeft} />
+							</Fab>
+						</Tooltip>
+						<Tooltip title="Successivo">
+							<Fab onClick={() => setActiveStep(activeStep < 3 ? activeStep + 1 : activeStep)} color="primary">
+								<FontAwesomeIcon icon={faArrowRight} />
+							</Fab>
+						</Tooltip>
+					</Stack>
+				</div>
+				<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+					<iframe height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=12.491798400878908%2C46.48373752813869%2C12.86602020263672%2C46.645429498183326&amp;layer=mapnik&amp;marker=46.564761777806275%2C12.678909301757812" style={{ border: "1px solid black", flexGrow: 1 }}></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=46.5648&amp;mlon=12.6789#map=12/46.5646/12.6789">Visualizza mappa ingrandita</a></small>
+				</div>
 			</Stack>
 		</Container>
 	);

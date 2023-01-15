@@ -56,7 +56,7 @@ export const Navbar = () => {
             <NavDropdown.Item href="https://sappadadolomiti.com">
               sappadadolomiti.com
             </NavDropdown.Item>
-            <NavDropdown.Item href="https://sappadadolomiti.com">
+            <NavDropdown.Item href="https://altedolomiti.it">
               altedolomiti.it
             </NavDropdown.Item>
           </NavDropdown>

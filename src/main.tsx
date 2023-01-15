@@ -17,6 +17,7 @@ import { createGlobalStyle } from "styled-components";
 import { Story } from "./pages/Story";
 import { Gallery } from "./pages/Gallery";
 import { Book } from "./pages/Book";
+import { BookConfirm } from "./pages/BookConfirm";
 
 const theme = createTheme({
 	palette: {
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="story" element={<Story />} />
       <Route path="gallery" element={<Gallery />} />
       <Route path="book" element={<Book />} />
+	  <Route path="bookconfirm" element={<BookConfirm />} />
 			{/*
       <Route path='signup' element={<Signup />} />
       <Route path='app-info' element={<AppInfo />} />
