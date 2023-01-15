@@ -112,7 +112,6 @@ export const Home = () => {
 					},
 					{
 						title: "Piste",
-						dark: false,
 						subtitle: "Famosa per le piste da sci, Sappada è molto frequentata dagli amanti della neve",
 						pic: "https://cdn.discordapp.com/attachments/1039274872737648765/1060156007231275008/SAPPADA_A9R0857_Bandion.jpg",
 					},
@@ -121,7 +120,7 @@ export const Home = () => {
 			<Container style={{ paddingTop: "50px", maxWidth: "1300px" }}>
 				<div style={{ display: "flex", flexDirection: "column", rowGap:"10ch" }}>
 					{Sections.map((s,i) => {
-						return <Section index={i} {...s} />;
+						return <Section key={i} index={i} {...s} />;
 					})}
 				</div>
 			</Container>
