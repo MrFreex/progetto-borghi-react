@@ -53,7 +53,7 @@ export const Section = (props: Section) => {
 	const index = props.index as number;
 	const comps = [
 		<Column style={{ margin: "auto" }}>
-			<SectionImg src={props.icon} />
+			<SectionImg alt={props.title} src={props.icon} />
 		</Column>,
 		<Column style={{ margin: "auto" }}>
 			<RightH2 invert={(index + 1) %2 === 0}>{props.title}</RightH2>

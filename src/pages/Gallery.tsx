@@ -41,7 +41,7 @@ const PictureFullscreen = (props: { img?: string, close : () => any }) => {
 
 	return <Fullscreen onClick={props.close} transition={{ duration: 0.25 }} initial={props.img ? Finitial : Fanimate} animate={props.img ? Fanimate : Finitial}>
         <Centered transition={{ duration: 0.25, delay: 0.25 }} initial={props.img ? Cinitial : Canimate} animate={props.img ? Canimate : Cinitial}>
-            <img src={props.img} />
+            <img alt="Gallery Image" src={props.img} />
         </Centered>
     </Fullscreen>
 };
