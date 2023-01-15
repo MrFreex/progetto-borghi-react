@@ -17,7 +17,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Story } from "./pages/Story";
 import { Gallery } from "./pages/Gallery";
 import { Book } from "./pages/Book";
-import { BookConfirm } from "./pages/BookConfirm";
+import { BookConfirm, Page404 } from "./pages/BookConfirm";
 
 const theme = createTheme({
 	palette: {
@@ -37,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="gallery" element={<Gallery />} />
       <Route path="book" element={<Book />} />
 	  <Route path="bookconfirm" element={<BookConfirm />} />
+	  <Route path="*" element={<Page404 />} />
 			{/*
       <Route path='signup' element={<Signup />} />
       <Route path='app-info' element={<AppInfo />} />
@@ -69,6 +70,13 @@ const Footer = styled.footer`
 	}
 `
 
+const footerPages = [
+	"",
+	"book",
+	"gallery",
+	"story",
+]
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
@@ -77,7 +85,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 			<RouterProvider router={router} />
 			{/* </Container> */}
 			{/* Footer */}
-			{ !window.location.href.endsWith("bookconfirm") &&
+			{ footerPages.includes(window.location.href.split("/")[(window.location.href.split("/").length) - 1]) &&
 			<Footer>
 				<div>
 					Copyright 2023 Filippo Lissandrin

@@ -28,3 +28,14 @@ export const BookConfirm = () => {
         <Button startIcon={<FontAwesomeIcon icon={faHome} />} variant="contained" href="/">Torna alla home</Button>
     </Center>
 }
+
+export const Page404 = () => {
+    
+    return <Center>
+        <h1>
+            404
+        </h1>
+        <Button startIcon={<FontAwesomeIcon icon={faHome} />} variant="contained" href="/">Torna alla home</Button>
+    </Center>
+
+}
