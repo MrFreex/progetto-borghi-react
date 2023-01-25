@@ -91,7 +91,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 					Copyright 2023 Filippo Lissandrin
 				</div>
 				<Stack spacing={1} direction="row">
-					<Avatar src="https://cdn.discordapp.com/avatars/338319779641294848/34a8c45d009d9ef39501d4fb748f932f.webp?size=160"/>
+					<Avatar src="https://cdn.discordapp.com/avatars/338319779641294848/3baa7f9abede93d7aff3aee200db6bd9.webp"/>
 					<div style={{ marginTop: "auto", marginBottom: "auto", textAlign: "center" }}><a href="https://github.com/MrFreex">MrFreex</a> on GitHub</div>
 				</Stack>
 			</Footer>}
